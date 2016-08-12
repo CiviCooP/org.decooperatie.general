@@ -1,0 +1,41 @@
+[
+  {
+    "name": "WPCivi_SignupForm_Result",
+    "label": "Members: signup via website",
+    "description": "Activity added by Gravity SignupFormHandler.",
+    "is_active": 1
+  },
+  {
+    "name": "WPCivi_OldSignupForm_Result",
+    "label": "Members: signup via website (temporary)",
+    "description": "Activity added by Gravity OldSignupFormHandler.",
+    "is_active": 1
+  },
+  {
+    "name": "CiviRules_WPCreateUser_Result",
+    "label": "Members: account created",
+    "description": "Activity added by CiviRulesAction WPCreateUser.",
+    "is_active": 1
+  },
+  {
+    "name": "CiviCase_AssignPersonResponsible",
+    "label": "Assign Person Responsible",
+    "description": "Job Platform: assigned responsible contact role.",
+    "component_id": 7,
+    "is_active": 1
+  },
+  {
+    "name": "CiviCase_AssignFreelancer",
+    "label": "Assign Freelancer",
+    "description": "Job Platform: assigned freelancer role.",
+    "component_id": 7,
+    "is_active": 1
+  },
+  {
+    "name": "CiviCase_PublishJob",
+    "label": "Publish Job",
+    "description": "Job Platform: job status changed.",
+    "component_id": 7,
+    "is_active": 1
+  }
+]

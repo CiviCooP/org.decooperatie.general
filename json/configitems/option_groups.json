@@ -1,0 +1,34 @@
+[
+  {
+    "name": "expertise_20160712153729",
+    "title": "Expertise",
+    "is_active": 1,
+    "is_reserved": 1,
+    "option_values": [
+      {
+        "label": "Schrijven",
+        "value": "1",
+        "name": "Schrijven",
+        "is_active": 1
+      },
+      {
+        "label": "Schilderen",
+        "value": "2",
+        "name": "Schilderen",
+        "is_active": 1
+      },
+      {
+        "label": "Punniken",
+        "value": "3",
+        "name": "Punniken",
+        "is_active": 1
+      },
+      {
+        "label": "Macrameeën",
+        "value": "4",
+        "name": "Macrameeen",
+        "is_active": 1
+      }
+    ]
+  }
+]

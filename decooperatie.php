@@ -1,4 +1,13 @@
 <?php
+/**
+ * Generic extension for De Cooperatie (org.decooperatie.general).
+ * For information about this extension, see README.md and info.xml.
+ *
+ * @author Kevin Levie <kevin.levie@civicoop.org>
+ * @package org.decooperatie.general
+ * @license AGPL-3.0
+ * @link https://github.com/civicoop/org.civicoop.configitems
+ */
 
 require_once 'decooperatie.civix.php';
 

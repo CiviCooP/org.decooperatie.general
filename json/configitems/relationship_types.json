@@ -1,0 +1,29 @@
+[
+  {
+    "name_a_b": "Jourcoop_Job_Client",
+    "label_a_b": "Job: Client",
+    "name_b_a": "Jourcoop_Job_Client",
+    "label_b_a": "Job: Client",
+    "contact_type_a": null,
+    "contact_type_b": null,
+    "is_active": 1
+  },
+  {
+    "name_a_b": "Jourcoop_Job_Responsible",
+    "label_a_b": "Job: Person Responsible",
+    "name_b_a": "Jourcoop_Job_Responsible",
+    "label_b_a": "Job: Person Responsible",
+    "contact_type_a": null,
+    "contact_type_b": null,
+    "is_active": 1
+  },
+  {
+    "name_a_b": "Jourcoop_Job_Freelancer",
+    "label_a_b": "Job: Freelancer",
+    "name_b_a": "Jourcoop_Job_Freelancer",
+    "label_b_a": "Job: Freelancer",
+    "contact_type_a": null,
+    "contact_type_b": null,
+    "is_active": 1
+  }
+]
