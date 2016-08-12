@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<extension key="org.decooperatie.general" type="module">
+  <file>decooperatie</file>
+  <name>De Coöperatie: general config/functions</name>
+  <description>General CiviCRM config/functions specific for decooperatie.org</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Kevin Levie</author>
+    <email>kevin.levie@civicoop.org</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">https://github.com/CiviCooP/org.decooperatie.general</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2016-08-12</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.7</ver>
+  </compatibility>
+  <comments>CiviCRM extension that contains general settings and functions written specifically for DeCooperatie.org.</comments>
+  <civix>
+    <namespace>CRM/Jourcoop</namespace>
+  </civix>
+</extension>
