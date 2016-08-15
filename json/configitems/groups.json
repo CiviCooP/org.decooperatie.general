@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Administrators",
     "title": "Admins",
     "description": "Contacten in deze groep hebben CiviCRM-beheerrechten<br>(indien gebruik wordt gemaakt van ACLs).",
@@ -8,12 +9,14 @@
     "group_type": 1
   },
   {
+    "id": 6,
     "name": "Jourcoop_Accounts",
     "label": "Accounts",
     "description": "Contacten voor wie een Wordpress-user account bestaat, of moet<br> bestaan. Bij het toevoegen van een contact aan deze groep wordt<br>automatisch geprobeerd een WordPress-account aan te maken.<br>",
     "is_active": 1
   },
   {
+    "id": 9,
     "name": "Jourcoop_Mailchimp_Test",
     "title": "Email: Newsletter",
     "description": "Contacts in this group will be synced<br>with the Mailchimp newsletter mailing list.<br>(Nu nog met 'Testlijst Staging')",

@@ -1,9 +1,33 @@
 [
   {
+    "name": "interesses_20160712153804",
+    "title": "Interesses",
+    "is_reserved": "1",
+    "is_active": "1"
+  },
+  {
+    "name": "beschikbaar__20160712153922",
+    "title": "Beschikbaar?",
+    "is_reserved": "1",
+    "is_active": "1"
+  },
+  {
+    "name": "werkplekvoorkeur_20160712161521",
+    "title": "Werkplekvoorkeur",
+    "is_reserved": "1",
+    "is_active": "1"
+  },
+  {
+    "name": "service_20160713042654",
+    "title": "Service",
+    "is_reserved": "1",
+    "is_active": "1"
+  },
+  {
     "name": "expertise_20160712153729",
     "title": "Expertise",
-    "is_active": 1,
-    "is_reserved": 1,
+    "is_reserved": "1",
+    "is_active": "1",
     "option_values": [
       {
         "label": "Schrijven",
