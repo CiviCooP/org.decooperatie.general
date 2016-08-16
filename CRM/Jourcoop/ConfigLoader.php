@@ -1,9 +1,13 @@
 <?php
-
 /**
  * Class CRM_Jourcoop_ConfigLoader.
  * This class loads important entity types from JSON files using the org.civicoop.configitems extension.
+ *
+ * @author Kevin Levie <kevin.levie@civicoop.org>
+ * @package org.decooperatie.general
+ * @license AGPL-3.0
  */
+
 class CRM_Jourcoop_ConfigLoader {
 
   /**
@@ -23,7 +27,7 @@ class CRM_Jourcoop_ConfigLoader {
       $loader = new \CRM_Civiconfig_Loader;
       $result = $loader->updateConfigurationFromJson($jsonPath);
 
-      // Set configLoaded = true and show status message with result
+      // Set configLoaded = true, and show status message with result
       \Civi::settings()->set('org.decooperatie.general.configLoaded', true);
 
       \CRM_Core_Session::setStatus("Imported Jourcoop JSON config files. This is the output we got from the Civiconfig Loader:\n\n" . nl2br(print_r($result, true)) . "\n");

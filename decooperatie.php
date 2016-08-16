@@ -15,8 +15,8 @@ require_once 'decooperatie.civix.php';
  * Implements hook_civicrm_config().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function general_civicrm_config(&$config) {
-  _general_civix_civicrm_config($config);
+function decooperatie_civicrm_config(&$config) {
+  _decooperatie_civix_civicrm_config($config);
 }
 
 /**
@@ -24,40 +24,40 @@ function general_civicrm_config(&$config) {
  * @param $files array(string)
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function general_civicrm_xmlMenu(&$files) {
-  _general_civix_civicrm_xmlMenu($files);
+function decooperatie_civicrm_xmlMenu(&$files) {
+  _decooperatie_civix_civicrm_xmlMenu($files);
 }
 
 /**
  * Implements hook_civicrm_install().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function general_civicrm_install() {
-  _general_civix_civicrm_install();
+function decooperatie_civicrm_install() {
+  _decooperatie_civix_civicrm_install();
 }
 
 /**
  * Implements hook_civicrm_uninstall().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function general_civicrm_uninstall() {
-  _general_civix_civicrm_uninstall();
+function decooperatie_civicrm_uninstall() {
+  _decooperatie_civix_civicrm_uninstall();
 }
 
 /**
  * Implements hook_civicrm_enable().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function general_civicrm_enable() {
-  _general_civix_civicrm_enable();
+function decooperatie_civicrm_enable() {
+  _decooperatie_civix_civicrm_enable();
 }
 
 /**
  * Implements hook_civicrm_disable().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function general_civicrm_disable() {
-  _general_civix_civicrm_disable();
+function decooperatie_civicrm_disable() {
+  _decooperatie_civix_civicrm_disable();
 }
 
 /**
@@ -67,8 +67,8 @@ function general_civicrm_disable() {
  * @return mixed Based on op. for 'check', returns array(boolean) (TRUE if upgrades are pending) for 'enqueue', returns void
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function general_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _general_civix_civicrm_upgrade($op, $queue);
+function decooperatie_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
+  return _decooperatie_civix_civicrm_upgrade($op, $queue);
 }
 
 /**
@@ -77,8 +77,8 @@ function general_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  * is installed, disabled, uninstalled.
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function general_civicrm_managed(&$entities) {
-  _general_civix_civicrm_managed($entities);
+function decooperatie_civicrm_managed(&$entities) {
+  _decooperatie_civix_civicrm_managed($entities);
 }
 
 /**
@@ -87,8 +87,8 @@ function general_civicrm_managed(&$entities) {
  * Note: This hook only runs in CiviCRM 4.4+.
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function general_civicrm_caseTypes(&$caseTypes) {
-  _general_civix_civicrm_caseTypes($caseTypes);
+function decooperatie_civicrm_caseTypes(&$caseTypes) {
+  _decooperatie_civix_civicrm_caseTypes($caseTypes);
 }
 
 /**
@@ -98,14 +98,14 @@ function general_civicrm_caseTypes(&$caseTypes) {
  * use features only available in v4.6+.
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function general_civicrm_angularModules(&$angularModules) {
-_general_civix_civicrm_angularModules($angularModules);
+function decooperatie_civicrm_angularModules(&$angularModules) {
+_decooperatie_civix_civicrm_angularModules($angularModules);
 }
 
 /**
  * Implements hook_civicrm_alterSettingsFolders().
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function general_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _general_civix_civicrm_alterSettingsFolders($metaDataFolders);
+function decooperatie_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
+  _decooperatie_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }

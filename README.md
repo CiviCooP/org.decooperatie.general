@@ -4,12 +4,12 @@ org.decooperatie.general
 CiviCRM extension that contains general settings and functions written
 specifically for [DeCooperatie.org](https://decooperatie.org).
 
-This extension requires the [org.civicoop.configitems](https://github.com/civicoop/org.civicoop.configitems)
-extension (and probably many more).
+It currently contains important CiviCRM configuration (stored in JSON files and loaded using [org.civicoop.configitems](https://github.com/civicoop/org.civicoop.configitems), which must be installed), and custom API methods and tasks specifically written for De Cooperatie. 
+
 
 ------------------------
 
-Call to import JSON data in the staging environment:
+Note to self, call to import JSON data in the staging environment:
 
 ```php
 $result = civicrm_api3('Civiconfig', 'load_json', [
