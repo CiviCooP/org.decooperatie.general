@@ -56,11 +56,12 @@ class CRM_Jourcoop_Membership_Renew {
 
                 $transaction = new \CRM_Core_Transaction;
 
+                // TODO Renew memberships and create a new contribution for the coming month.
                 // WORK IN PROGRESS !!!!!!!!11
                 // https://github.com/SPnl/nl.sp.renewmembership/blob/master/CRM/Renewmembership/Renew.php#L54
 
-                // TODO Even kijken wat er gebeurt als ik gewoon deze method aanroep:
-                // TODO CRM_Member_BAO_Membership::renewMembership($membership['contact_id'], $membership['type_id'], false, true, null, null, 1, $membership['id'], 0, null, null, true, null, []);
+                // Even kijken wat er gebeurt als ik gewoon deze core method aanroep:
+                // CRM_Member_BAO_Membership::renewMembership($membership['contact_id'], $membership['type_id'], false, true, null, null, 1, $membership['id'], 0, null, null, true, null, []);
 
                 /* // Set new membership end date
                 civicrm_api3('Membership', 'create', [
@@ -68,14 +69,9 @@ class CRM_Jourcoop_Membership_Renew {
                     'end_date' => $newEnddate->format('Ymd'),
                 ]);
                 */
-
-                // Get last contribution? Ja, MembershipPayment/Contributiontransact/etc
-                // Hee, er is een nieuwe Payment API voor een bestaande contributie in 4.7.
-
-                // Contribution.create
-                // MembershipPayment.create
-
-                // Membership.create (=update einddatum)
+                // Get last contribution? Ja, Contribution.create, MemberShip.create, Contribute.transact, etc.
+                // Hee, er is een nieuwe Payment API voor een bestaande contributie in 4.7
+                // Zie ook SP-versie, maar die heeft andere uitgangspunten:
                 // https://github.com/SPnl/nl.sp.renewmembership/blob/master/CRM/Renewmembership/Renew.php#L54
 
                 $transaction->commit();

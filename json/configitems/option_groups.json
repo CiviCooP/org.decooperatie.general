@@ -54,5 +54,85 @@
         "is_active": 1
       }
     ]
+  },
+  {
+    "name": "case_status",
+    "title": "Case Status",
+    "is_reserved": "1",
+    "option_values": [
+      {
+        "label": "Ongoing",
+        "value": "11",
+        "name": "Ongoing",
+        "grouping": "Opened",
+        "weight": "4",
+        "description": "Opdracht toegewezen aan opdrachtnemer, uitvoering gestart.",
+        "is_active": "1"
+      },
+      {
+        "label": "Completed",
+        "value": "21",
+        "name": "Completed",
+        "grouping": "Closed",
+        "weight": "7",
+        "description": "Opdracht uitgevoerd en afgerond, betaling kan worden verwerkt.",
+        "is_active": "1"
+      },
+      {
+        "label": "Dispute",
+        "value": "13",
+        "name": "Dispute",
+        "grouping": "Opened",
+        "weight": "6",
+        "description": "Geschil tussen opdrachtgever en opdrachtnemer: actie door beheerders vereist.",
+        "is_active": "1"
+      },
+      {
+        "label": "Awaiting Review",
+        "value": "3",
+        "name": "Awaiting Review",
+        "grouping": "Opened",
+        "weight": "3",
+        "description": "Aanvraag moet worden goedgekeurd door een admin om openbaar op de website gepubliceerd te worden.\n(Wellicht is deze status niet nodig.)",
+        "is_active": "1"
+      },
+      {
+        "label": "Public",
+        "value": "2",
+        "name": "Public",
+        "grouping": "Opened",
+        "weight": "2",
+        "description": "Aanvraag gepubliceerd op website, zichtbaar voor alle leden.",
+        "is_active": "1"
+      },
+      {
+        "label": "Awaiting Approval",
+        "value": "12",
+        "name": "Awaiting Approval",
+        "grouping": "Opened",
+        "weight": "5",
+        "description": "Opdracht als gereed gemarkeerd door opdrachtnemer, wacht op goedkeuring opdrachtgever.",
+        "is_active": "1"
+      },
+      {
+        "label": "Cancelled",
+        "value": "22",
+        "name": "Cancelled",
+        "grouping": "Closed",
+        "weight": "8",
+        "description": "Opdracht geannuleerd.",
+        "is_active": "1"
+      },
+      {
+        "label": "Submitted",
+        "value": "1",
+        "name": "Submitted",
+        "grouping": "Opened",
+        "weight": "1",
+        "description": "Voor deze opdracht moet een opdrachtnemer worden gezocht en geselecteerd door een lead member of admin.",
+        "is_active": "1"
+      }
+    }
+    ]
   }
 ]

@@ -20,6 +20,7 @@ class CRM_Jourcoop_Upgrader extends CRM_Jourcoop_Upgrader_Base {
 
   /**
    * Run members migration script (20160815)
+   * Set to a new / higher id to execute on staging environment!
    */
   public function upgrade_20160815() {
 

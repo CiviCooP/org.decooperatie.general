@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "job",
+    "name": "opdracht",
     "title": "Job",
     "description": "A job, project or service handled through this platform",
     "is_active": "1",
@@ -9,7 +9,7 @@
     "definition": {
       "activityTypes": [
         {
-          "name": "Assignment Conditions"
+          "name": "Job Conditions"
         }
       ],
       "activitySets": [
