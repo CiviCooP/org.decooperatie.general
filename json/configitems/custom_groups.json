@@ -165,7 +165,7 @@
         "data_type": "String",
         "html_type": "Radio",
         "is_required": "0",
-        "is_searchable": "0",
+        "is_searchable": "1",
         "is_search_range": "0",
         "weight": "8",
         "is_active": "1",
