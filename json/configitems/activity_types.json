@@ -18,6 +18,18 @@
     "is_active": 1
   },
   {
+    "name": "WPCivi_MemberContactForm_Result",
+    "label": "Members: contact data updated",
+    "description": "Activity added by Gravity MemberContactFormHandler.",
+    "is_active": 1
+  },
+  {
+    "name": "WPCivi_MemberProfileForm_Result",
+    "label": "Members: profile data updated",
+    "description": "Activity added by Gravity MemberProfileFormHandler.",
+    "is_active": 1
+  },
+  {
     "name": "CiviCase_AssignPersonResponsible",
     "label": "Assign Person Responsible",
     "description": "Job Platform: assigned responsible contact role.",

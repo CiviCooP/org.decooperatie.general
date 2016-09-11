@@ -16,7 +16,7 @@
  * @see civicrm_api3_create_error
  * @throws API_Exception
  */
-function civicrm_api3_Membership_JourcoopRenew($params) {
+function civicrm_api3_membership_jourcooprenew($params) {
 
     try {
         $renew = \CRM_Jourcoop_Membership_Renew::getInstance();
@@ -31,4 +31,4 @@ function civicrm_api3_Membership_JourcoopRenew($params) {
 /**
  * @param array $params Info about parameters this API call supports
  */
-function _civicrm_api3_Membership_JourcoopRenew_spec(&$params) { }
+function _civicrm_api3_membership_jourcooprenew_spec(&$params) { }

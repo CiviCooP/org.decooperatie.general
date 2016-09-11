@@ -15,7 +15,63 @@
     "name": "werkplekvoorkeur_20160712161521",
     "title": "Werkplekvoorkeur",
     "is_reserved": "1",
-    "is_active": "1"
+    "is_active": "1",
+    "option_values": [
+      {
+        "label": "Amsterdam",
+        "value": "amsterdam",
+        "name": "Amsterdam",
+        "is_active": 1
+      },
+      {
+        "label": "Hilversum",
+        "value": "hilversum",
+        "name": "Hilversum",
+        "is_active": 1
+      },
+      {
+        "label": "Rotterdam",
+        "value": "rotterdam",
+        "name": "Rotterdam",
+        "is_active": 1
+      },
+      {
+        "label": "Den Haag",
+        "value": "denhaag",
+        "name": "Den_Haag",
+        "is_active": 1
+      },
+      {
+        "label": "Utrecht",
+        "value": "utrecht",
+        "name": "Utrecht",
+        "is_active": 1
+      },
+      {
+        "label": "Eindhoven",
+        "value": "eindhoven",
+        "name": "Eindhoven",
+        "is_active": 1
+      },
+      {
+        "label": "Tilburg",
+        "value": "tilburg",
+        "name": "Tilburg",
+        "is_active": 1
+      },
+      {
+        "label": "Groningen",
+        "value": "groningen",
+        "name": "Groningen",
+        "is_active": 1
+      },
+      {
+        "label": "Nijmegen",
+        "value": "nijmegen",
+        "name": "Nijmegen",
+        "is_active": 1
+      }
+    ]
   },
   {
     "name": "service_20160713042654",
@@ -132,7 +188,7 @@
         "description": "Voor deze opdracht moet een opdrachtnemer worden gezocht en geselecteerd door een lead member of admin.",
         "is_active": "1"
       }
-    }
+      }
     ]
   }
 ]

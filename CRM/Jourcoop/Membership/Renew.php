@@ -37,7 +37,7 @@ class CRM_Jourcoop_Membership_Renew {
         // will be renewed on the last day of each month. And if the script didn't run it will still fix it later.
         $chkEnddateBefore = new \DateTime("now +1 day");
 
-        $memberships = civicrm_api3('Memberships', 'get', [
+        $memberships = civicrm_api3('Membership', 'get', [
            'status_id' => ['New', 'Current', 'Grace'],
             'end_date' => $chkEnddateBefore->format('Ymd'),
             'options' => ['limit' => 0],

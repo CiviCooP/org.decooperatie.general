@@ -18,7 +18,7 @@ return [
                     'description'   => 'Updates active memberships that should be renewed for another month.',
                     'run_frequency' => 'Daily',
                     'api_entity'    => 'Membership',
-                    'api_action'    => 'JourcoopRenew',
+                    'api_action'    => 'Jourcooprenew',
                 ],
         ],
 ];

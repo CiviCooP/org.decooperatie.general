@@ -33,10 +33,11 @@ class CRM_Jourcoop_Membership_Migrate {
     $cvapi = new CRM_Jourcoop_CiviApi;
 
     // Get/set settings and field ids
+    // ?? Regression? Searching by group name does not work anymore
     $groupNames = [
-      'leads'   => 'Ge_mporteerde_leads_7', // Will get pending membership
-      'members' => ['Geimporteerde_inschrijvingen_4'], // Will get active membership
-      'new' => ['Nieuwe_inschrijvingen_website_3'], // Will get active membership
+      'leads'   => $cvapi->getContactGroupId('Ge_mporteerde_leads_7'), // Will get pending membership
+      'members' => $cvapi->getContactGroupId('Geimporteerde_inschrijvingen_4'), // Will get active membership
+      'new' => $cvapi->getContactGroupId('Nieuwe_inschrijvingen_website_3'), // Will get active membership
     ];
     $tempFields = [
       'NVJ_Member'   => $cvapi->getCustomFieldId('Leden_Tijdelijk', 'Lid_NVJ', TRUE),
@@ -55,7 +56,7 @@ class CRM_Jourcoop_Membership_Migrate {
       'Werkervaring' => $cvapi->getCustomFieldId('Member_Profile', 'Werkervaring', TRUE),
     ];
     $websiteTypeMapping = [
-      'website' => 'Main',
+      'work' => 'Work',
       'facebook_link' => 'Facebook',
       'twitter_profiel' => 'Twitter',
       'linkedin_profiel' => 'LinkedIn',
@@ -68,6 +69,7 @@ class CRM_Jourcoop_Membership_Migrate {
       'api.UFMatch.getsingle' => [],
       'return'             => array_merge(array_values($tempFields), ['id', 'display_name']),
     ];
+    $count = 0;
 
     // You never know...
     if (!function_exists('get_userdata') || !function_exists('get_user_meta')) {
@@ -78,13 +80,18 @@ class CRM_Jourcoop_Membership_Migrate {
     $cmembers = $cvapi->api('Contact', 'get', array_merge($contactApiParams, ['group' => $groupNames['members']]));
     $cleads = $cvapi->api('Contact', 'get', array_merge($contactApiParams, ['group' => $groupNames['leads']]));
     $cnew = $cvapi->api('Contact', 'get', array_merge($contactApiParams, ['group' => $groupNames['leads']]));
-    foreach ($cmembers->values as &$m) { $m->action = 'active'; $m->source = 'Geïmporteerde inschrijvingen'; }
-    foreach ($cleads->values as &$l) { $l->action = 'lead'; $l->source = 'Geïmporteerde leads'; }
-    foreach($cnew->values as &$n) { $n->action = 'new'; $n->source = 'Via website zomer 2016'; }
+    if($cmembers->is_error || $cleads->is_error || $cnew->is_error) {
+      throw new CRM_Jourcoop_Exception('Could not fetch members (Contact.get API error).');
+    }
+
+    foreach ($cmembers->values as &$m) { $m->action = 'active'; $m->source = 'Geimporteerde inschrijving'; }
+    foreach ($cleads->values as &$l) { $l->action = 'lead'; $l->source = 'Geimporteerde lead'; }
+    foreach($cnew->values as &$n) { $n->action = 'new'; $n->source = 'Online zomer 2016'; }
     $contacts = array_merge($cmembers->values, $cleads->values, $cnew->values);
 
     // Walk contacts array
     foreach ($contacts as $c) {
+      $this->debug("Migrating contact {$c->contact_id} ({$c->display_name})");
 
       // Fetch Wordpress metadata, too
       $wpmeta = [];
@@ -92,57 +99,83 @@ class CRM_Jourcoop_Membership_Migrate {
         $uf_id = $c->{'api.UFMatch.getsingle'}->uf_id;
         $wpmeta = array_map(function ($a) { return $a[0]; }, get_user_meta($uf_id));
         $wpuserdata = get_userdata($uf_id);
-        $wpmeta['website'] = $wpuserdata->user_url;
+        $wpmeta['work'] = $wpuserdata->user_url;
       }
+      $this->debug("Migrating contact {$c->contact_id} ({$c->display_name}");
 
       // Update new contact data fields
-      $isNvjMember = &$c->{$tempFields['Lid_NVJ']};
+      $isNvjMember = empty($c->{$tempFields['NVJ_Member']}) ? 0 : ($c->{$tempFields['NVJ_Member']});
+      $wplocaties = []; // Hoofdpijndossier
+      if(!empty($c->{$tempFields['Werkplek']})) {
+        foreach (['Amsterdam', 'Den Haag', 'Rotterdam', 'Hilversum'] as $wplocatie) {
+          if(strpos($c->{$tempFields['Werkplek']}, $wplocatie) !== false) {
+            $wplocaties[] = strtolower(preg_replace('/[^a-zA-Z]+/', '', $wplocatie));
+          }
+        }
+      }
       $cparams = [
         'contact_id'             => $c->contact_id,
         'job_title' => (!empty($wpmeta['functie']) ? $wpmeta['functie'] : ''),
         $newFields['Werkervaring'] => (!empty($wpmeta['description']) ? $wpmeta['description'] : ''),
         $newFields['NVJ_Member'] => $isNvjMember,
-        $newFields['NVJ_Since']  => $c->{$tempFields['Lid_NVJ_sinds']},
-        $newFields['IBAN']       => $c->{$tempFields['IBAN']},
-        $newFields['Werkplek'] => $c->{$tempFields['Werkplek']},
+        $newFields['NVJ_Since']  => (!empty($c->{$tempFields['NVJ_Since']}) ? date('Ymd',strtotime($c->{$tempFields['NVJ_Since']})) : ''),
+        $newFields['IBAN']       => (!empty($c->{$tempFields['IBAN']}) ? $c->{$tempFields['IBAN']} : ''),
+        $newFields['Werkplek'] => $wplocaties,
       ];
+      $this->debug("Calling Contact.create with params: " . print_r($cparams, true));
       $cret = $cvapi->api('Contact', 'create', $cparams);
       if($cret->is_error) {
         throw new \CRM_Jourcoop_Exception('Could not update contact (' . $cret->error_message . ')! We tried these parameters: ' . print_r($cparams, true));
       }
 
       // Add a new membership if none exists yet
-      if(empty($c->{'api.Membership.getsingle'}->is_error) && $c->{'api.Membership.getsingle'}->count > 0) {
+      if(!empty($c->{'api.Membership.getsingle'}->is_error) && $c->{'api.Membership.getsingle'}->count > 0) {
+        $this->debug("A membership already exists for contact (" . print_r($c->{'api.Membership.getsingle'}, true));
         continue;
       }
       $mparams = [
         'contact_id' => $c->contact_id,
-        'membership_type_id' => ($isNvjMember ? 'Lid_NVJ' : 'Lid'),
-        'join_date' => ($c->{$tempFields['Aanmelddatum']}),
-        'start_date' => '2016-09-01 00:00:00',
-        'num_terms' => 1,
+        'membership_type_id' => ($isNvjMember ? 'Lid (NVJ)' : 'Lid'),
+        'join_date' => (!empty(($c->{$tempFields['Aanmelddatum']})) ? (date('Ymd',strtotime($c->{$tempFields['Aanmelddatum']}))) : null),
+        'start_date' => '20160901',
+        // 'num_terms' => 1,
         'source' => $c->source,
       ];
+      if($c->action == 'lead') {
+        $mparams['status_id'] = 'Pending';
+        $mparams['is_override'] = 1;
+      }
+      $this->debug("Calling Membership.create with params: " . print_r($mparams, true));
       $mret = $cvapi->api('Membership', 'create', $mparams);
       if($mret->is_error) {
         throw new \CRM_Jourcoop_Exception('Could not create membership for contact (' . $mret->error_message . ')! We tried these parameters: ' . print_r($mparams, true));
       }
 
+      print_r($wpmeta);
       // Add website and social profiles to CiviCRM (and clean up in / make available to WP afterwards?)
       foreach($websiteTypeMapping as $wpMetaName => $civiWebsiteType) {
         if(!empty($wpmeta[$wpMetaName])) {
-          $cvapi->api('Website', 'create', [
+          $wparams = [
             'contact_id' => $c->contact_id,
             'website_type_id' => $civiWebsiteType,
             'url' => $wpmeta[$wpMetaName],
-          ]);
+            'is_primary' => ($wpMetaName == 'work'),
+          ];
+          $this->debug("Calling Website.create with params: " . print_r($wparams, true));
+          $cvapi->api('Website', 'create', $wparams);
         }
       }
 
-      // That should do the trick! (Next steps: testing, backing up live and running it there)
+      // That should do the trick!
+      $count++;
+      $this->debug("CONTACT $count: migrated.");
     }
 
-    return TRUE;
+    return $count;
+  }
+
+  private function debug($msg) {
+    echo $msg . "\n";
   }
 
 }

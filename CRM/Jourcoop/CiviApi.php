@@ -8,6 +8,8 @@
  * @license AGPL-3.0
  */
 
+require_once CIVICRM_PLUGIN_DIR . 'civicrm/api/class.api.php';
+
 class CRM_Jourcoop_CiviApi extends \civicrm_api3 {
 
   /**
@@ -45,5 +47,16 @@ class CRM_Jourcoop_CiviApi extends \civicrm_api3 {
       ]);
     }
     return ($addCustom ? 'custom_' : '') . $this->cache['cfid'][$groupName][$fieldName];
+  }
+
+  public function getContactGroupId($groupName)
+  {
+    if(!isset($this->cache['groupid'][$groupName])) {
+      $this->cache['groupid'][$groupName] = civicrm_api3('Group', 'getvalue', [
+        'name' => $groupName,
+        'return' => 'id',
+      ]);
+    }
+    return $this->cache['groupid'][$groupName];
   }
 }
