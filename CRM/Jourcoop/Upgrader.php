@@ -8,23 +8,24 @@
  * @package org.decooperatie.general
  * @license AGPL-3.0
  */
-class CRM_Jourcoop_Upgrader extends CRM_Jourcoop_Upgrader_Base {
+class CRM_Jourcoop_Upgrader extends CRM_Jourcoop_Upgrader_Base
+{
 
-  /**
-   * Load JSON config files on install.
-   */
-  public function install() {
-    \CRM_Jourcoop_ConfigLoader::run();
-  }
+    /**
+     * Load JSON config files on first install.
+     */
+    public function install()
+    {
+        \CRM_Jourcoop_ConfigLoader::run();
+    }
 
-  /**
-   * Run members migration script (20160908)
-   * Set to a new / higher id to execute on staging environment!
-   */
-  public function upgrade_20160901() {
-    $mm = CRM_Jourcoop_Membership_Migrate::getInstance();
-    $mm->migration_20160901();
-    return TRUE;
-  }
+    /**
+     * Run one off members migration script.
+     * Hmm, no, let's do that using the API...
+     *   public function upgrade_2016091300() {
+     *    $mm = CRM_Jourcoop_Membership_Migrate::getInstance();
+     *    $mm->migrateTemporaryMembershipData();
+     *   }
+     */
 
 }

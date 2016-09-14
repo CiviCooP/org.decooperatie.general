@@ -218,7 +218,7 @@
   },
   "address_data": {
     "id": 1,
-    "name": "Jourcoop_CBS_Data",
+    "name": "Adresgegevens",
     "title": "CBS Data (NL)",
     "extends": "Address",
     "style": "Inline",

@@ -15,7 +15,7 @@
  * @see civicrm_api3_create_error
  * @throws API_Exception
  */
-function civicrm_api3_Case_JourcoopCreate($params) {
+function civicrm_api3_case_jourcoopcreate($params) {
 
     return civicrm_api3_create_success(true, $params, 'Case', 'JourcoopCreate');
 }
@@ -23,4 +23,4 @@ function civicrm_api3_Case_JourcoopCreate($params) {
 /**
  * @param array $params Info about parameters this API call supports
  */
-function _civicrm_api3_Case_JourcoopCreate_spec(&$params) { }
+function _civicrm_api3_case_jourcoopcreate_spec(&$params) { }

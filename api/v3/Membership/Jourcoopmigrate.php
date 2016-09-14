@@ -19,7 +19,7 @@ function civicrm_api3_membership_jourcoopmigrate($params) {
 
     try {
         $mm = \CRM_Jourcoop_Membership_Migrate::getInstance();
-        $count = $mm->migration_20160901();
+        $count = $mm->migrateTemporaryMembershipData();
     } catch(\CRM_Jourcoop_Exception $e) {
         return civicrm_api3_create_error('Membership migration error: ' . $e->getMessage() . '.');
     }
