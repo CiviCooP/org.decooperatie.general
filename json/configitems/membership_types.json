@@ -2,7 +2,7 @@
   "lid": {
     "domain_id": 1,
     "name": "Lid",
-    "description": "",
+    "description": "Lid",
     "member_of_contact": 1,
     "duration_unit": "month",
     "duration_interval": 1,
@@ -18,7 +18,7 @@
   "lid_nvj": {
     "domain_id": 1,
     "name": "Lid (NVJ)",
-    "description": "",
+    "description": "Lid van NVJ",
     "member_of_contact": 1,
     "duration_unit": "month",
     "duration_interval": 1,
@@ -28,7 +28,23 @@
     "minimum_fee": 10,
     "financial_type_id": 5,
     "visibility": "Public",
-    "weight": 1,
+    "weight": 2,
+    "is_active": 1
+  }
+  "lid_associated": {
+    "domain_id": 1,
+    "name": "Lid (associated)",
+    "description": "Geassocieerde leden",
+    "member_of_contact": 1,
+    "duration_unit": "month",
+    "duration_interval": 1,
+    "period_type": "fixed",
+    "fixed_period_start_day": null,
+    "fixed_period_rollover_day": 1,
+    "minimum_fee": 0,
+    "financial_type_id": 5,
+    "visibility": "Public",
+    "weight": 3,
     "is_active": 1
   }
 }

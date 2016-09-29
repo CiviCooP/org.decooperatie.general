@@ -119,7 +119,7 @@
       {
         "label": "Ongoing",
         "value": "11",
-        "name": "Ongoing",
+        "name": "Open",
         "grouping": "Opened",
         "weight": "4",
         "description": "Opdracht toegewezen aan opdrachtnemer, uitvoering gestart.",
