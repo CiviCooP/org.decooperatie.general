@@ -1,6 +1,5 @@
 {
   "administrative_data": {
-    "id": "10",
     "name": "Jourcoop_Administrative_Data",
     "title": "Administrative Data",
     "extends": "Individual",
@@ -105,7 +104,6 @@
     ]
   },
   "member_profile": {
-    "id": "9",
     "name": "Jourcoop_Member_Profile",
     "title": "Member Profile (NL)",
     "extends": "Individual",
@@ -119,7 +117,6 @@
     "is_reserved": "0",
     "fields": [
       {
-        "id": "31",
         "name": "Expertise",
         "label": "Expertise",
         "data_type": "String",
@@ -139,7 +136,6 @@
         "in_selector": "0"
       },
       {
-        "id": "32",
         "name": "Interests",
         "label": "Interesses",
         "data_type": "String",
@@ -159,7 +155,6 @@
         "in_selector": "0"
       },
       {
-        "id": "34",
         "name": "Availability",
         "label": "Beschikbaar?",
         "data_type": "String",
@@ -178,7 +173,6 @@
         "in_selector": "0"
       },
       {
-        "id": "40",
         "name": "Werkplekvoorkeur",
         "label": "Werkplekvoorkeur",
         "data_type": "String",
@@ -197,7 +191,6 @@
         "in_selector": "0"
       },
       {
-        "id": "42",
         "name": "Werkervaring",
         "label": "Werkervaring",
         "data_type": "Memo",
@@ -217,7 +210,6 @@
     ]
   },
   "address_data": {
-    "id": 1,
     "name": "Adresgegevens",
     "title": "CBS Data (NL)",
     "extends": "Address",
@@ -306,7 +298,6 @@
     ]
   },
   "assignment_details": {
-    "id": "8",
     "name": "Jourcoop_Assignment_details",
     "title": "Assignment Details",
     "extends": "Case",
@@ -323,7 +314,6 @@
     "is_reserved": "0",
     "fields": [
       {
-        "id": "30",
         "custom_group_id": "8",
         "name": "Price",
         "label": "Price",
@@ -342,7 +332,6 @@
         "in_selector": "0"
       },
       {
-        "id": "41",
         "custom_group_id": "8",
         "name": "Service",
         "label": "Service",
@@ -364,7 +353,6 @@
     ]
   },
   "service_payments": {
-    "id": "11",
     "name": "Jourcoop_Service_Payments",
     "title": "Service Payments",
     "extends": "Contribution",
@@ -378,7 +366,6 @@
     "is_reserved": "0",
     "fields": [
       {
-        "id": "43",
         "custom_group_id": "11",
         "name": "Request_Link",
         "label": "Request Link",

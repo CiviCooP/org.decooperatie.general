@@ -20,7 +20,7 @@ class CRM_Jourcoop_ConfigLoader
         // Check if this function has already run (note: this is >= 4.7 only syntax!)
         $configLoaded = \Civi::settings()->get('org.decooperatie.general.configLoaded');
 
-        if (!isset($configLoaded) || $configLoaded == false) {
+        if (!isset($configLoaded) || $configLoaded == FALSE) {
 
             $jsonPath = realpath(__DIR__ . '/../../json/configitems/');
 
@@ -33,10 +33,12 @@ class CRM_Jourcoop_ConfigLoader
             $result = $loader->updateConfigurationFromJson($jsonPath);
 
             // Set configLoaded = true, and show status message with result
-            \Civi::settings()->set('org.decooperatie.general.configLoaded', true);
+            \Civi::settings()->set('org.decooperatie.general.configLoaded', TRUE);
 
-            \CRM_Core_Session::setStatus("Imported Jourcoop JSON config files. This is the output we got from the Civiconfig Loader:\n\n" . nl2br(print_r($result, true)) . "\n");
+            \CRM_Core_Session::setStatus("Imported Jourcoop JSON config files. This is the output we got from the Civiconfig Loader:\n\n" . nl2br(print_r($result, TRUE)) . "\n");
         }
+
+        return TRUE;
     }
 
 }

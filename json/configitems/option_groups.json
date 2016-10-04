@@ -119,7 +119,7 @@
       {
         "label": "Ongoing",
         "value": "11",
-        "name": "Open",
+        "name": "Ongoing",
         "grouping": "Opened",
         "weight": "4",
         "description": "Opdracht toegewezen aan opdrachtnemer, uitvoering gestart.",
@@ -187,7 +187,6 @@
         "weight": "1",
         "description": "Voor deze opdracht moet een opdrachtnemer worden gezocht en geselecteerd door een lead member of admin.",
         "is_active": "1"
-      }
       }
     ]
   }

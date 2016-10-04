@@ -1,18 +1,9 @@
 org.decooperatie.general
 ========================
 
-CiviCRM extension that contains general settings and functions written
-specifically for [DeCooperatie.org](https://decooperatie.org).
+CiviCRM extension with functionality and settings specifically for [DeCooperatie.org](https://decooperatie.org).  
+This extension currently contains:
 
-It currently contains important CiviCRM configuration (stored in JSON files and loaded using [org.civicoop.configitems](https://github.com/civicoop/org.civicoop.configitems), which must be installed), and custom API methods and tasks specifically written for De Cooperatie. 
+* Important CiviCRM configuration, stored in JSON files that can be loaded by calling the `Civiconfig.load_json` API method (requires the [org.civicoop.configitems](https://github.com/civicoop/org.civicoop.configitems) extension)
+* Two custom API methods and tasks: `Membership.JourcoopMigrate` is a one-off migration script; `Membership.JourcoopRenew` is used as a cron task to automatically renew memberships and generate contributions every month.
 
-
-------------------------
-
-Note to self, call to import JSON data in the staging environment:
-
-```php
-$result = civicrm_api3('Civiconfig', 'load_json', [
-  'path' => "/srv/users/serverpilot/apps/cooperatie-staging/public/wp-content/uploads/civicrm/ext/org.decooperatie.general/json/configitems",
-]);
-```
