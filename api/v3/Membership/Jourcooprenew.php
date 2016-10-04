@@ -20,12 +20,12 @@ function civicrm_api3_membership_jourcooprenew($params) {
 
     try {
         $renew = \CRM_Jourcoop_Membership_Renew::getInstance();
-        $count = $renew->renewMemberships();
+        $return = $renew->renewMemberships();
     } catch(\CRM_Jourcoop_Exception $e) {
         return civicrm_api3_create_error('Membership renewal error: ' . $e->getMessage() . '.');
     }
 
-    return civicrm_api3_create_success("{$count} memberships renewed.", $params, 'Membership', 'JourcoopRenew');
+    return civicrm_api3_create_success($return, $params, 'Membership', 'JourcoopRenew');
 }
 
 /**
