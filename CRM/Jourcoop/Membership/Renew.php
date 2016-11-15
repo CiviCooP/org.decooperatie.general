@@ -46,7 +46,7 @@ class CRM_Jourcoop_Membership_Renew {
     // Hardcoded parameters for De Cooperatie
     $noContributionsBefore = new \DateTime('2016-09-01');
     $paymentMethodName = 'Handled by Exact';
-    $retIncludeSkipped = FALSE; // For debugging
+    $retIncludeSkipped = TRUE; // For debugging
 
     $return = ['memberships' => [], 'contributions' => []]; // Used to return status array
     $cvapi = new \CRM_Jourcoop_CiviApi;
@@ -151,7 +151,7 @@ class CRM_Jourcoop_Membership_Renew {
         /** @var \DateTime[] $createDates * */
         $createDates = new \DatePeriod($createFromDate, new \DateInterval('P1M'), $createUntilDate);
         if (iterator_count($createDates) > 0) {
-          $cresultmsg = "cid {$membership->contact_id}, from {$createFromDate->format('d-m-Y')} up to {$createUntilDate->format('d-m-Y')}, details: ";
+          $cresultmsg = "cid {$membership->contact_id}, from {$createFromDate->format('d-m-Y')} up to {$createUntilDate->format('d-m-Y')}, lastContribDate " . (!empty($lastContribDate) ? $lastContribDate->format('Y-m-d') : 'none') . ", details: ";
 
           foreach ($createDates as $cdate) {
 
