@@ -46,7 +46,7 @@ class CRM_Jourcoop_Membership_Renew {
     // Hardcoded parameters for De Cooperatie
     $noContributionsBefore = new \DateTime('2016-09-01');
     $paymentMethodName = 'Handled by Exact';
-    $retIncludeSkipped = TRUE; // For debugging
+    $retIncludeSkipped = FALSE; // For debugging
 
     $return = ['memberships' => [], 'contributions' => []]; // Used to return status array
     $cvapi = new \CRM_Jourcoop_CiviApi;
@@ -106,9 +106,14 @@ class CRM_Jourcoop_Membership_Renew {
     if ($memberships->count > 0) {
       foreach ($memberships->values as $membership) {
 
+        // Default: create contributions from join until end date, unless earlier contributions exist
+        $createFromDate = new \DateTime($membership->join_date);
         $createUntilDate = new \DateTime($membership->end_date);
-        $mpayment = $membership->{'api.MembershipPayment.getsingle'};
+        if ($createFromDate < $noContributionsBefore) {
+          $createFromDate = $noContributionsBefore;
+        }
 
+        $mpayment = $membership->{'api.MembershipPayment.getsingle'};
         $mtype = $membershipTypes[$membership->membership_type_id];
         if ($mtype->minimum_fee == 0) {
           if ($retIncludeSkipped) {
@@ -133,23 +138,18 @@ class CRM_Jourcoop_Membership_Renew {
               }
               continue;
             }
+            // Some contributions not created yet, create from this date on
+            $createFromDate = $lastContribDate;
           }
-        }
-
-        // Default if no contribution found: start from the join date
-        if (!isset($createFromDate)) {
-          $createFromDate = new \DateTime($membership->join_date);
-          if ($createFromDate < $noContributionsBefore) {
-            $createFromDate = $noContributionsBefore;
-          }
-        }
-        if ($createFromDate->format('j') != 1) {
-          $createFromDate->modify('first day of next month');
         }
 
         // Try to create contributions every first of the month between the calculated dates
-        /** @var \DateTime[] $createDates * */
+        if ($createFromDate->format('j') != 1) {
+          $createFromDate->modify('first day of next month');
+        }
         $createDates = new \DatePeriod($createFromDate, new \DateInterval('P1M'), $createUntilDate);
+
+        /** @var \DateTime[] $createDates * */
         if (iterator_count($createDates) > 0) {
           $cresultmsg = "cid {$membership->contact_id}, from {$createFromDate->format('d-m-Y')} up to {$createUntilDate->format('d-m-Y')}, lastContribDate " . (!empty($lastContribDate) ? $lastContribDate->format('Y-m-d') : 'none') . ", details: ";
 
