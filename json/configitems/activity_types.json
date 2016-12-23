@@ -30,24 +30,10 @@
     "is_active": 1
   },
   {
-    "name": "CiviCase_AssignPersonResponsible",
-    "label": "Assign Person Responsible",
-    "description": "Job Platform: assigned responsible contact role.",
-    "component_id": 7,
-    "is_active": 1
-  },
-  {
-    "name": "CiviCase_AssignFreelancer",
-    "label": "Assign Freelancer",
-    "description": "Job Platform: assigned freelancer role.",
-    "component_id": 7,
-    "is_active": 1
-  },
-  {
-    "name": "CiviCase_PublishJob",
-    "label": "Publish Job",
-    "description": "Job Platform: job status changed.",
-    "component_id": 7,
-    "is_active": 1
+    "name": "WPCivi_JobReplyForm_Result",
+    "label": "Jobs: new reply",
+    "description": "Activity added by Gravity JobReplyFormHandler.",
+    "is_active": 1,
+    "component_id": 7
   }
 ]
