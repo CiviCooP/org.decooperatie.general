@@ -12,6 +12,12 @@
     "is_active": "1"
   },
   {
+    "name": "beschikbaar_als_spreker__20170318190735",
+    "title": "Beschikbaar als spreker?",
+    "is_reserved": "1",
+    "is_active": "1"
+  },
+  {
     "name": "werkplekvoorkeur_20160712161521",
     "title": "Werkplekvoorkeur",
     "is_reserved": "1",

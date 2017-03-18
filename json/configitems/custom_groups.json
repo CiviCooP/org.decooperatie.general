@@ -173,6 +173,24 @@
         "in_selector": "0"
       },
       {
+        "name": "Beschikbaar_als_spreker",
+        "label": "Beschikbaar als spreker?",
+        "data_type": "String",
+        "html_type": "Radio",
+        "is_required": "0",
+        "is_searchable": "1",
+        "is_search_range": "0",
+        "weight": "9",
+        "is_active": "1",
+        "is_view": "0",
+        "text_length": "255",
+        "note_columns": "60",
+        "note_rows": "4",
+        "column_name": "beschikbaar_als_spreker__58",
+        "option_group_id": "108",
+        "in_selector": "0"
+      },
+      {
         "name": "Werkplekvoorkeur",
         "label": "Werkplekvoorkeur",
         "data_type": "String",
