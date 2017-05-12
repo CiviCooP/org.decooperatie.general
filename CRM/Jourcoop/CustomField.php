@@ -149,7 +149,7 @@ class CRM_Jourcoop_CustomField {
    * Get a custom field ID by group name and field name.
    * @param string $groupName Group name
    * @param string $fieldName Field name
-   * @return id|bool Field ID if found, false if not found
+   * @return int|bool Field ID if found, false if not found
    */
   public function getFieldId($groupName, $fieldName) {
     $field = $this->getField($groupName, $fieldName);
@@ -171,6 +171,51 @@ class CRM_Jourcoop_CustomField {
       return 'custom_' . $field['id'];
     }
     return FALSE;
+  }
+
+  /**
+   * Get database table name for group.
+   * @param string $groupName Group name
+   * @return string|bool Name if found, false if not found
+   */
+  public function getDatabaseTable($groupName) {
+    $group = $this->getGroupByName($groupName);
+    if($group) {
+      return $group['table_name'];
+    }
+    return false;
+  }
+
+  /**
+   * Get database column name for field.
+   * @param string $groupName Group name
+   * @param string $fieldName Field name
+   * @return string|bool Name if found, false if not found
+   */
+  public function getDatabaseColumn($groupName, $fieldName) {
+    $field = $this->getField($groupName, $fieldName);
+    if ($field) {
+      return $field['column_name'];
+    }
+  }
+
+  /**
+   * Get both database table and column name as an array.
+   * @param string $groupName Group name
+   * @param string $fieldName Field name
+   * @return string[]|bool Both names
+   */
+  public function getDatabaseTableColumn($groupName, $fieldName) {
+    $group = $this->getGroupByName($groupName);
+    if($group) {
+      foreach ($group['fields'] as $field) {
+        if ($field['name'] == $fieldName) {
+          return [$group['table_name'], $field['column_name']];
+        }
+      }
+    }
+
+    return false;
   }
 
   /**
