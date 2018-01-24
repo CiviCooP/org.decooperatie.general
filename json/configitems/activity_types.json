@@ -30,6 +30,12 @@
     "is_active": 1
   },
   {
+    "name": "WPCivi_MemberPaymentForm_Result",
+    "label": "Members: payment form processed",
+    "description": "Activity added by Gravity MemberPaymentFormHandler.",
+    "is_active": 1
+  },
+  {
     "name": "WPCivi_JobReplyForm_Result",
     "label": "Jobs: new reply",
     "description": "Activity added by Gravity JobReplyFormHandler.",
